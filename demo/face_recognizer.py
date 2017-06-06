@@ -3,14 +3,15 @@ import os
 import numpy as np
 from PIL import Image
 
-cascadePath = "./data/haarcascades/haarcascade_frontalface_default.xml"
+cascadePath = "../data/haarcascades/haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascadePath)
 
 recognizer = cv2.face.createLBPHFaceRecognizer()
 
 
 def get_images_and_labels(path):
-    image_paths = [os.path.join(path, f) for f in os.listdir(path) if (f.startswith('subject') and not f.endswith('.sad'))]
+    image_paths = [os.path.join(path, f)
+                   for f in os.listdir(path) if (f.startswith('subject') and not f.endswith('.sad'))]
     images = []
     labels = []
     for image_path in image_paths:
@@ -25,7 +26,7 @@ def get_images_and_labels(path):
             cv2.waitKey(50)
     return images, labels
 
-path = './data/yalefaces'
+path = '../data/yalefaces'
 images, labels = get_images_and_labels(path)
 cv2.destroyAllWindows()
 

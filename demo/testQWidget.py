@@ -15,7 +15,7 @@ class QWidgetExample(QWidget):
         self.setGeometry(300, 300, 300, 200)  # set position and size
         self.setWindowTitle('TestQt')
         self.center()
-        icon = QIcon('resources/icon/embarrass_icon.png')
+        icon = QIcon('../resources/icon/embarrass_icon.png')
 
         self.setWindowIcon(icon)
 
