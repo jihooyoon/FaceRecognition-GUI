@@ -52,6 +52,17 @@ class Recognizer:
         self.is_trained = True
 
     def predict(self, image):
+
         if self.algorithm == FACE_RECOGNIZER_EIGEN or self.algorithm == FACE_RECOGNIZER_FISHER:
             image = cv2.resize(image, (100, 100))
-        return self.labels_map[self.recognizer.predict(image)[0]]
+
+        conf = self.recognizer.predict(image)[1]
+        result = self.recognizer.predict(image)[0]
+        print(result, conf)
+        if result < 0:
+            return ""
+        else:
+            return self.labels_map[result]
+
+    def set_threshold(self, threshold):
+        self.recognizer.setThreshold(threshold)

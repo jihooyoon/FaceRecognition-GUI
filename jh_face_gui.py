@@ -27,7 +27,7 @@ class JHFaceGUI(QtWidgets.QWidget, mainwidget.Ui_mainForm):
         self.data_builder = data_builder.DataBuilder(global_variables.DATA_PATH)
         self.face_cascade = cv2.CascadeClassifier(global_variables.CASCADE_PATH)
         self.num_of_faces = 0
-        self.recognizer = recognizer.Recognizer(self.data_builder, recognizer.FACE_RECOGNIZER_EIGEN)
+        self.recognizer = recognizer.Recognizer(self.data_builder, recognizer.FACE_RECOGNIZER_LBPH)
         self.recognizer_enable = False
 
         self.setupUi(self)
@@ -41,6 +41,7 @@ class JHFaceGUI(QtWidgets.QWidget, mainwidget.Ui_mainForm):
         self.addDataButton.clicked.connect(self.add_data)
         self.trainButton.clicked.connect(self.train)
         self.recognizeButton.clicked.connect(self.toggle_recognizer)
+        self.thresholdLineEdit.textChanged.connect(self.set_threshold)
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.display_video_stream)
@@ -136,6 +137,14 @@ class JHFaceGUI(QtWidgets.QWidget, mainwidget.Ui_mainForm):
         else:
             self.recognizer_enable = False
             self.recognizeButton.setText("RECOGNIZE")
+
+    def set_threshold(self):
+        threshold_str = self.thresholdLineEdit.text()
+        try:
+            threshold = float(threshold_str)
+            self.recognizer.set_threshold(threshold)
+        except ValueError:
+            print("Threshold input text is not a float")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

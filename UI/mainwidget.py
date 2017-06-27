@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'UI/mainwidget.ui'
+# Form implementation generated from reading ui file 'mainwidget.ui'
 #
 # Created by: PyQt5 UI code generator 5.8.2
 #
@@ -12,7 +12,7 @@ class Ui_mainForm(object):
     def setupUi(self, mainForm):
         mainForm.setObjectName("mainForm")
         mainForm.setWindowModality(QtCore.Qt.NonModal)
-        mainForm.resize(672, 320)
+        mainForm.resize(689, 338)
         self.horizontalLayout = QtWidgets.QHBoxLayout(mainForm)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.cameraLabel = QtWidgets.QLabel(mainForm)
@@ -127,6 +127,19 @@ class Ui_mainForm(object):
         self.recognizeButton.setStyleSheet("")
         self.recognizeButton.setObjectName("recognizeButton")
         self.verticalLayout_3.addWidget(self.recognizeButton)
+        self.widget = QtWidgets.QWidget(self.recognizeWidget)
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.thresholdLabel = QtWidgets.QLabel(self.widget)
+        self.thresholdLabel.setObjectName("thresholdLabel")
+        self.horizontalLayout_2.addWidget(self.thresholdLabel)
+        self.thresholdLineEdit = QtWidgets.QLineEdit(self.widget)
+        self.thresholdLineEdit.setFocusPolicy(QtCore.Qt.ClickFocus)
+        self.thresholdLineEdit.setObjectName("thresholdLineEdit")
+        self.horizontalLayout_2.addWidget(self.thresholdLineEdit)
+        self.verticalLayout_3.addWidget(self.widget)
         self.verticalLayout.addWidget(self.recognizeWidget)
         self.horizontalLayout.addWidget(self.controlWidget)
 
@@ -143,4 +156,5 @@ class Ui_mainForm(object):
         self.statusLabel.setText(_translate("mainForm", "No Image Added"))
         self.trainButton.setText(_translate("mainForm", "Train"))
         self.recognizeButton.setText(_translate("mainForm", "RECOGNIZE"))
+        self.thresholdLabel.setText(_translate("mainForm", "Threshold:"))
 
